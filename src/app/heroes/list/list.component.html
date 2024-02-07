@@ -1,0 +1,25 @@
+<h1>Listado de héroes</h1>
+
+<!-- Quiere decir que si es falso no se muestra y si es true se muestra -->
+<div *ngIf="personDelete; else anyPersonDelete">
+  <h3>
+    Heróe Eliminado <small class="text-danger"> {{ personDelete }} </small>
+  </h3>
+</div>
+
+<!-- Esto de aqui sirve como un div pero internamente, no se ve modificado en la estructura HTMl -->
+<ng-template #anyPersonDelete>
+  <h3>No ha borrado nada</h3>
+</ng-template>
+
+<button
+  *ngIf="listNames.length > 0"
+  (click)="deletePerson()"
+  class="btn btn-outline-danger"
+>
+  Borrar Empleado
+</button>
+
+<ul class="mt-2 list-group">
+  <li *ngFor="let name of listNames" class="list-group-item">{{ name }}</li>
+</ul>
